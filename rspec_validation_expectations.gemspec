@@ -1,11 +1,11 @@
 Gem::Specification.new do |s|
   s.name     = "rspec_validation_expectations"
-  s.version  = "0.5"
-  s.date     = "2008-08-14"
+  s.version  = "0.5.1"
+  s.date     = "2008-08-16"
   s.summary  = "Adds several handy expectations for testing ActiveRecord model validations."
-  s.email    = "pelargir@gmail.com"
-  s.homepage = "http://github.com/pelargir/rspec_validation_expectations"
-  s.description = "Adds several handy expectations for testing ActiveRecord model validations."
+  s.email    = "jeff@jwhitmire.com"
+  s.homepage = "http://github.com/jwhitmire/rspec_validation_expectations"
+  s.description = "Adds several handy expectations for testing ActiveRecord model validations.  Extended from pelargir's repo of the same name."
   s.has_rdoc = true
   s.authors  = ["Matthew Bass"]
   s.files    = [
