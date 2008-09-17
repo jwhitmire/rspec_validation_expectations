@@ -57,3 +57,43 @@ def it_should_be_createable *args
     lambda {model_name.create(attributes)}.should change(model_name, :count).by(1)
   end
 end
+
+def it_should_validate_length_of(field_name, *args)
+  model_name = described_type
+  options = args.last.is_a?(Hash) ? args.pop : {}
+
+  it "should validate length of #{field_name.to_s.humanize.downcase}" do
+    validations = model_name.reflect_on_all_validations
+    validation  = validations.detect {|v| v.macro == :validates_length_of && v.name == field_name}
+  
+    unless validation.nil?
+      validation.options[:within].sort.should == options[:within].sort
+    end
+  end
+end
+
+def it_should_validate_confirmation_of(*one_or_more_fields)
+  model_name = described_type
+  one_or_more_fields.each do |field|
+    it "should validate confirmation of #{field.to_s.humanize.downcase}" do
+      validations = model_name.reflect_on_all_validations
+      validations = validations.select { |e| e.macro == :validates_confirmation_of }
+      field_names = validations.collect(&:name)
+      field_names.should include(field)
+    end
+  end
+end
+
+def it_should_validate_format_of(field_name, *args)
+  model_name = described_type
+  options = args.last.is_a?(Hash) ? args.pop : {}
+
+  it "should validate format of #{field_name.to_s.humanize.downcase}" do
+    validations = model_name.reflect_on_all_validations
+    validation  = validations.detect {|v| v.macro == :validates_format_of && v.name == field_name}
+  
+    unless validation.nil?
+      validation.options[:with].should == options[:with]
+    end
+  end
+end
