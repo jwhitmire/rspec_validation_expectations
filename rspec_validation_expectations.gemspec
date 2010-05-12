@@ -2,8 +2,8 @@ require 'rake'
 
 Gem::Specification.new do |s|
   s.name     = "rspec_validation_expectations"
-  s.version  = "0.5.1"
-  s.date     = "2008-08-16"
+  s.version  = "0.5.2"
+  s.date     = "2010-05-11"
   s.summary  = "Adds several handy expectations for testing ActiveRecord model validations."
   s.email    = "jeff@jwhitmire.com"
   s.homepage = "http://github.com/jwhitmire/rspec_validation_expectations"

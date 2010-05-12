@@ -32,6 +32,19 @@ module ValidationExpectations
     end
   end
 
+  define_method("it_should_validate_associated") do |*one_or_more_fields|
+    options = one_or_more_fields.last.is_a?(Hash) ? one_or_more_fields.pop : {}
+    model_name = described_type
+    one_or_more_fields.each do |field|
+      it "should validate associated of #{field.to_s.humanize.downcase}" do
+        validations = model_name.reflect_on_all_validations
+        validations = validations.select { |e| e.macro == "validates_associated".to_sym }
+        validations.collect(&:name).should include(field)
+        validations.collect(&:options).should include(options)
+      end
+    end
+  end
+
 end
 
 include ValidationExpectations

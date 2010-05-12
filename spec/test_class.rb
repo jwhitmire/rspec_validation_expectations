@@ -19,5 +19,6 @@ class TestClass < ActiveRecord::Base
   validates_length_of :password, :in => 6..20
   validates_confirmation_of :email
   validates_acceptance_of :terms_of_service
+  validates_associated :address
 
 end

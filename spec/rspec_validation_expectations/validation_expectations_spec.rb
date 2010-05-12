@@ -11,6 +11,7 @@ describe TestClass do
   it_should_validate_length_of :password, :in => 6..20
   it_should_validate_confirmation_of :email
   it_should_validate_acceptance_of :terms_of_service
+  it_should_validate_associated :address
   #it_should_be_createable
 
 end
